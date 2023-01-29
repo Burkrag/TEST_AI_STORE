@@ -25,9 +25,4 @@ public class OurBestSellers {
         products.get(randomProduct).click();
         return productName;
     }
-
-    public String selectedProductName(){
-        WebElement selectedItem = driver.findElement(By.cssSelector("div.summary.entry-summary > h1"));
-        return selectedItem.getText();
-    }
 }

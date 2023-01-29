@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.pages.OurBestSellers;
+import pageObjects.pages.SelectedProduct;
 
 import static java.lang.Thread.sleep;
 
@@ -37,7 +38,7 @@ public class SelectBestSellerProductSteps {
 
     @Then("^user is on product page$")
     public void userIsOnProductPage() {
-        OurBestSellers ourBestSellers = new OurBestSellers(driver);
+        SelectedProduct ourBestSellers = new SelectedProduct(driver);
         Assert.assertEquals(productName,ourBestSellers.selectedProductName());
         driver.quit();
     }
