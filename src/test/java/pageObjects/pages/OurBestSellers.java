@@ -12,7 +12,7 @@ public class OurBestSellers {
 
     public OurBestSellers(WebDriver driver){ OurBestSellers.driver=driver; }
 
-    public String addToCartRandomBestSeller(){
+    public String selectRandomBestSeller(){
         //List of all best sellers
         List<WebElement> products = driver.findElements(By.xpath("//*[@id='woocommerce_top_rated_products-2']/ul/li/a"));
         //Length of list
@@ -24,10 +24,5 @@ public class OurBestSellers {
         //Add to cart random product
         products.get(randomProduct).click();
         return productName;
-    }
-
-    public String selectedProductName(){
-        WebElement selectedItem = driver.findElement(By.cssSelector("div.summary.entry-summary > h1"));
-        return selectedItem.getText();
     }
 }

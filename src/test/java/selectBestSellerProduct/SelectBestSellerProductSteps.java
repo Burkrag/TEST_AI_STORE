@@ -7,8 +7,8 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.pages.OurBestSellers;
-
-import static java.lang.Thread.sleep;
+import pageObjects.pages.SelectedProduct;
+import java.util.concurrent.TimeUnit;
 
 public class SelectBestSellerProductSteps {
 
@@ -16,7 +16,7 @@ public class SelectBestSellerProductSteps {
     private String productName;
 
     @Given("User is on main page")
-    public void userIsOnMainPage() throws InterruptedException {
+    public void userIsOnMainPage() {
         System.setProperty("webdriver.chrome.driver",
                 "src/main/resources/drivers/chromedriver.exe");
         // Open new Chrome page
@@ -25,19 +25,18 @@ public class SelectBestSellerProductSteps {
         driver.manage().window().maximize();
         // Go to main page
         driver.get("https://testaistore.com/store/");
-        sleep(3000);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-    @When("^user select random product from best sellers section$")
-    public void userSelectRandomProductFromBestSellersSection() throws InterruptedException {
+    @When("^user selects random product from best sellers section$")
+    public void userSelectRandomProductFromBestSellersSection() {
         OurBestSellers ourBestSellers = new OurBestSellers(driver);
-        productName = ourBestSellers.addToCartRandomBestSeller();
-        sleep(3000);
+        productName = ourBestSellers.selectRandomBestSeller();
     }
 
     @Then("^user is on product page$")
     public void userIsOnProductPage() {
-        OurBestSellers ourBestSellers = new OurBestSellers(driver);
+        SelectedProduct ourBestSellers = new SelectedProduct(driver);
         Assert.assertEquals(productName,ourBestSellers.selectedProductName());
         driver.quit();
     }
