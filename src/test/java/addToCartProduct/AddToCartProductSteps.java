@@ -69,5 +69,6 @@ public class AddToCartProductSteps {
     public void userCanSeeProductInTheCart() {
         CartPage cartPage = new CartPage(driver);
         Assert.assertEquals(cartPage.productNameInCart(),productName);
+        driver.quit();
     }
 }
