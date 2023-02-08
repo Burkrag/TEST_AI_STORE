@@ -66,4 +66,16 @@ public class CheckoutPage {
         WebElement invalidPaymentMethod = driver.findElement(By.xpath("/html/body/div/div[1]/div/div/main/article/div/div/section[2]/div/div/div/div/div/div/div/form[3]/div[1]/ul/li"));
         invalidPaymentMethod.getText();
     }
+
+    public void orderNotes(String note){
+        WebElement noteWindow = driver.findElement(By.xpath("//*[@id='order_comments']"));
+        noteWindow.sendKeys(note);
+    }
+
+    public String checkProductName(){
+        WebElement productName = driver.findElement(By.xpath("//*[@id='order_review']/table/tbody/tr/td[1]/text()"));
+        return productName.getText();
+    }
+
+
 }

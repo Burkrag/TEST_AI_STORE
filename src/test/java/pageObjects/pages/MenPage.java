@@ -12,9 +12,9 @@ public class MenPage {
 
     public MenPage(WebDriver driver){ MenPage.driver=driver; }
 
-    public void menPageDescription(String menPageTexting){
+    public String menPageDescription(){
         WebElement menPageTopText = driver.findElement(By.xpath("//*[@id='main']/div/header/div/p/text()"));
-        menPageTopText.getText();
+        return menPageTopText.getText();
     }
 
     public String addToCartRandomMenProduct() {
